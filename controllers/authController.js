@@ -83,14 +83,12 @@ module.exports.budget_get = async (req, res) => {
     const token = req.cookies.jwt;
 
     await jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
-        console.dir(err);
         if (err) {
             res.json({
                 isAuth: false, message: "Authentication Failed"
             });
         } else {
             const { userId } = decoded;
-            console.log(decoded)
             Budget.find({ userId }).then(function(budgets){
                 res.send(budgets);
             });
