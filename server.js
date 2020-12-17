@@ -32,7 +32,7 @@ app.use(compression({
 }));
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:3001',
+    origin: '*',
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
     credentials: true
 }));
