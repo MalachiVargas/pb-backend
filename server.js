@@ -32,7 +32,7 @@ app.use(compression({
 }));
 app.use(cookieParser());
 app.use(cors({
-    origin: '*',
+    origin: 'https://pb-project.herokuapp.com',
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
     credentials: true
 }));
