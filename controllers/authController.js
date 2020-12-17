@@ -79,10 +79,10 @@ module.exports.logout_get = (req, res) => {
     res.json({ isAuth: false, token: null });
 }
 
-module.exports.budget_get = (req, res) => {
+module.exports.budget_get = async (req, res) => {
     const token = req.cookies.jwt;
 
-    jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
+    await jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
         console.dir(err);
         if (err) {
             res.json({
@@ -120,10 +120,10 @@ module.exports.budget_post = async (req, res) => {
     });
 };
 
-module.exports.budget_deleteAll = (req, res) => {
+module.exports.budget_deleteAll = async (req, res) => {
     const token = req.cookies.jwt;
 
-    jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
+    await jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
         if (err) {
             res.json({
                 isAuth: false, message: "Authentication Failed"
@@ -137,10 +137,10 @@ module.exports.budget_deleteAll = (req, res) => {
     })
 }
 
-module.exports.budget_delete = (req, res) => {
+module.exports.budget_delete = async (req, res) => {
     const token = req.cookies.jwt;
 
-    jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
+    await jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
         if (err) {
             res.json({
                 isAuth: false, message: "Authentication Failed"
@@ -154,9 +154,9 @@ module.exports.budget_delete = (req, res) => {
     })
 }
 
-module.exports.refresh_get = (req, res) => {
+module.exports.refresh_get = async (req, res) => {
     const token = req.cookies.jwt;
-    jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
+    await jwt.verify(token, '60F86D370CD72739392926ACEFF5F8AF776EBFF5E8FCE9735EFFCEB3F19A581A', (err, decoded) => {
         if (err) {
             res.json({
                 isAuth: false, message: "Authentication Failed"

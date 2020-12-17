@@ -9,6 +9,7 @@ const dotenv = require('dotenv');
 
 
 const app = express();
+app.set("trust proxy", 1);
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
