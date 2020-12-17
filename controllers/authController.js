@@ -50,7 +50,7 @@ module.exports.signup_post = async (req, res) => {
     try {
         const user = await User.create({ email, password });
         const token = createToken(user._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000, SameSite: None, Secure });
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000, sameSite: 'None', secure: true });
         res.status(201).json({ token, isAuth: true });
     } catch (err) {
         const errors = handleErrors(err);
@@ -66,7 +66,7 @@ module.exports.login_post = async (req, res) => {
     try {
         const user = await User.login(email, password);
         const token = createToken(user._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000, sameSite: 'None', secure: true });
         res.status(200).json({ isAuth: true, user: user._id, token });
     } catch (err) {
         const errors = handleErrors(err);
@@ -75,7 +75,7 @@ module.exports.login_post = async (req, res) => {
 }
 
 module.exports.logout_get = (req, res) => {
-    res.cookie('jwt', '', { httpOnly: true, maxAge: 1 });
+    res.cookie('jwt', '', { httpOnly: true, maxAge: 1, sameSite: 'None', secure: true });
     res.json({ isAuth: false, token: null });
 }
 
@@ -164,7 +164,7 @@ module.exports.refresh_get = async (req, res) => {
         } else {
             const { userId } = decoded;
             const token = createToken(userId);
-            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000, sameSite: 'None', secure: true });
             res.status(200).json({ isAuth: true, token });
         }
     })
