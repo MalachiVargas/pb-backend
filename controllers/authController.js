@@ -94,7 +94,6 @@ module.exports.budget_get = async (req, res) => {
             });
         }
     })
-    +
 }
 
 const handleBVErrors = (err) => {
