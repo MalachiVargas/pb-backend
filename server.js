@@ -33,7 +33,7 @@ app.use(compression({
 }));
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://elastic-goldstine-4d0e72.netlify.app/',
+    origin: 'https://elastic-goldstine-4d0e72.netlify.app',
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
     credentials: true
 }));
