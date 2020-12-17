@@ -32,7 +32,7 @@ app.use(compression({
 }));
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://pb-project.herokuapp.com',
+    origin: 'https://elastic-goldstine-4d0e72.netlify.app',
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
     credentials: true
 }));
